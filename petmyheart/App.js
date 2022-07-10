@@ -11,7 +11,6 @@ import Navigation from './src/navigation';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {UserContextProvider} from './src/context/UserContext';
 import {CLIENT_ID} from '@env';
-import RegisterScreen from './src/screens/registerScreen';
 
 const App = () => {
   useEffect(() => {

@@ -39,8 +39,10 @@ export default function InputComponent({
   Icon,
   visibleIcon = false,
   visibleAlert = false,
+  changeUser,
+  input,
 }) {
-  const [passVisible, setPassVisible] = useState(false);
+  const [passVisible, setPassVisible] = useState(!visibleIcon);
   const changePassVisible = () => setPassVisible(!passVisible);
   return (
     <View style={styles.containerInput}>
@@ -51,6 +53,7 @@ export default function InputComponent({
           placeholder={title}
           style={styles.input}
           secureTextEntry={!passVisible}
+          onChange={e => changeUser(e.nativeEvent.text, input)}
         />
       </View>
       {visibleIcon ? (

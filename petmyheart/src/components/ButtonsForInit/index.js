@@ -6,7 +6,8 @@ import Icons from '../Icons';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const addUser = (user, navigation, nameScreen, changeLoading) => {
+// navigation, nameScreen
+const addUser = (user, changeLoading) => {
   firestore()
     .collection('usuarios')
     .add({
@@ -16,31 +17,26 @@ const addUser = (user, navigation, nameScreen, changeLoading) => {
     })
     .then(() => {
       changeLoading(false);
-      navigation.navigate(nameScreen);
     });
 };
 
-const registerEmailUser = (user, navigation, nameScreen, changeLoading) => {
+//navigation, nameScreen
+const registerEmailUser = (user, changeLoading) => {
   auth()
     .createUserWithEmailAndPassword(
       user.valuesRegister.email,
       user.valuesRegister.password,
     )
     .then(() => {
-      addUser(user, navigation, nameScreen, changeLoading);
+      addUser(user, changeLoading);
     })
     .catch(error => {
       changeLoading(false);
     });
 };
 
-const validateData = (
-  user,
-  changeUser,
-  navigation,
-  nameScreen,
-  changeLoading,
-) => {
+// navigation, nameScreen
+const validateData = (user, changeAlerts, changeLoading) => {
   const list = [false, false, false, false];
   const inputs = [
     {fun: user.validateName(user)},
@@ -52,32 +48,26 @@ const validateData = (
   inputs.forEach((item, index) => {
     list[index] = item.fun;
   });
-
-  changeUser(list, 'alert');
+  changeAlerts(list);
 
   if (list.includes(true)) {
     changeLoading(false);
   } else {
     changeLoading(true);
-    registerEmailUser(user, navigation, nameScreen, changeLoading);
+    registerEmailUser(user, changeLoading);
   }
 };
 
-export default function ButtonsForInit({
-  isActive,
-  navigation,
-  nameScreen,
-  user,
-  changeUser,
-  changeLoading,
-}) {
+// navigation, nameScreen, isActive
+export default function ButtonsForInit({user, changeAlerts, changeLoading}) {
   return (
     <View>
       <TouchableOpacity
-        style={styles.button1}
-        onPress={() =>
-          validateData(user, changeUser, navigation, nameScreen, changeLoading)
-        }>
+        style={{
+          ...styles.button1,
+          ...(user.getBool() ? {} : {backgroundColor: '#B09AAC'}),
+        }}
+        onPress={() => validateData(user, changeAlerts, changeLoading)}>
         <Text style={styles.text1}>CREAR CUENTA</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button2}>

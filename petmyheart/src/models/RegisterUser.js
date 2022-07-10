@@ -5,7 +5,6 @@ class RegisterUser {
     password = '',
     password2 = '',
     term = true,
-    alert = [false, false, false, false],
   ) {
     this.valuesRegister = {
       name: name,
@@ -13,7 +12,6 @@ class RegisterUser {
       password: password,
       password2: password2,
       term: term,
-      alert: alert,
     };
   }
 
@@ -66,22 +64,6 @@ class RegisterUser {
     this.valuesRegister = {...this.valuesRegister, ...value};
   }
 
-  getalert1() {
-    return this.valuesRegister.alert1;
-  }
-
-  getalert2() {
-    return this.valuesRegister.alert2;
-  }
-
-  getalert3() {
-    return this.valuesRegister.alert3;
-  }
-
-  getalert4() {
-    return this.valuesRegister.alert4;
-  }
-
   getBool() {
     if (
       this.valuesRegister.name.length > 0 &&
@@ -90,9 +72,9 @@ class RegisterUser {
       this.valuesRegister.password2.length > 0 &&
       this.valuesRegister.term === true
     ) {
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 }
