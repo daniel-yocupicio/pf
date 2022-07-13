@@ -6,6 +6,7 @@ import HomeScreen from '../screens/homeScreen';
 import LoginScreen from '../screens/loginScreen';
 import UserContext from '../context/UserContext.js';
 import auth from '@react-native-firebase/auth';
+import DrawerStack from './DrawerStack';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +27,9 @@ const stackNoLoged = [
 
 const stackLoged = [
   {
-    name: 'Home',
-    component: HomeScreen,
-    title: 'Home',
+    name: 'DrawerStack',
+    component: DrawerStack,
+    title: 'DrawerStack',
     header: false,
   },
 ];
