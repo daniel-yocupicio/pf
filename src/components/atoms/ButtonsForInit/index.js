@@ -38,8 +38,8 @@ const validateData = (user, changeAlerts, changeLoading) => {
   const list = [false, false, false, false];
   const inputs = [
     {fun: user.validateName(user)},
-    {fun: user.validateEmail(user)},
-    {fun: user.validatePassword(user)},
+    {fun: user.validatePasswordOrEmail(user, 'email')},
+    {fun: user.validatePasswordOrEmail(user, 'password')},
     {fun: user.validatePassword2(user)},
   ];
 
