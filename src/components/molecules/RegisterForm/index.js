@@ -3,7 +3,6 @@ import {View, Text} from 'react-native';
 import Term from '../../atoms/Term';
 import ButtonsForInit from '../../atoms/ButtonsForInit';
 import BottomText from '../../atoms/BottomText';
-import Icons from '../../atoms/Icons';
 import InputComponent from '../../atoms/InputComponent';
 import NameAppSVG from '../../../assets/icons/nameapp.svg';
 import LogoRegisterSVG from '../../../assets/icons/logoRegister.svg';
@@ -12,6 +11,7 @@ import EmailSVG from '../../../assets/icons/email.svg';
 import PasswordSVG from '../../../assets/icons/password.svg';
 import styles from './styles';
 import globalstyles from '../../../const/globalStyles';
+import TopDesign from '../../atoms/TopDesign';
 
 const dataInputs = [
   {
@@ -35,7 +35,7 @@ const dataInputs = [
   },
 ];
 
-const TopDesign = () => {
+/*const TopDesign = () => {
   return (
     <View style={styles.logoscontainer}>
       <View style={styles.logosdireccion}>
@@ -44,7 +44,7 @@ const TopDesign = () => {
       </View>
     </View>
   );
-};
+};*/
 
 const Inputs = ({changeUser, alerts}) => {
   return dataInputs.map((item, index) => (
@@ -70,7 +70,11 @@ export default function RegisterForm({
 }) {
   return (
     <View style={styles.container}>
-      <TopDesign />
+      <TopDesign
+        styles={styles}
+        NameAppSVG={NameAppSVG}
+        LogoRegisterSVG={LogoRegisterSVG}
+      />
       <View style={{...globalstyles.formContainer, ...{marginTop: 20}}}>
         <Text style={styles.text}>REGISTRO</Text>
         <Inputs changeUser={changeUser} alerts={alerts} />
