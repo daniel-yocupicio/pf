@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import NameAppSVG from '../../assets/icons/nameapp.svg';
 import LogoSVG from '../../assets/icons/logo.svg';
-import Icons from '../../components/atoms/Icons';
 import InputComponent from '../../components/atoms/InputComponent';
 import EmailSVG from '../../assets/icons/email.svg';
 import PasswordSVG from '../../assets/icons/password.svg';
@@ -13,16 +12,13 @@ import styles from './styles';
 import LoginUser from '../../models/LoginUser';
 import globalstyles from '../../const/globalStyles';
 import TopDesign from '../../components/atoms/TopDesign';
-
-const newObject = (object, key, value) => {
-  object.setValues({[key]: value});
-  return new LoginUser(object.valuesLogin.email, object.valuesLogin.password);
-};
+import functions from './functions';
 
 export default function LoginScreen({navigation}) {
   const [user, setUser] = useState(new LoginUser());
   const [loading, setLoading] = useState(false);
-  const changeUser = (value, key) => setUser(newObject(user, key, value));
+  const changeUser = (value, key) =>
+    setUser(functions.newObject(user, key, value));
   const changeLoading = bool => setLoading(bool);
 
   return (
