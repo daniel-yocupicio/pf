@@ -11,6 +11,7 @@ import UserSVG from '../../../assets/icons/userIcon.svg';
 import EmailSVG from '../../../assets/icons/email.svg';
 import PasswordSVG from '../../../assets/icons/password.svg';
 import styles from './styles';
+import globalstyles from '../../../const/globalStyles';
 
 const dataInputs = [
   {
@@ -65,11 +66,12 @@ export default function RegisterForm({
   changeAlerts,
   changeLoading,
   changeUser,
+  navigation,
 }) {
   return (
     <View style={styles.container}>
       <TopDesign />
-      <View style={styles.formcontainer}>
+      <View style={{...globalstyles.formContainer, ...{marginTop: 20}}}>
         <Text style={styles.text}>REGISTRO</Text>
         <Inputs changeUser={changeUser} alerts={alerts} />
         <Term
@@ -83,7 +85,11 @@ export default function RegisterForm({
           changeAlerts={changeAlerts}
           changeLoading={changeLoading}
         />
-        <BottomText text={'¿Ya tienes una cuenta?'} />
+        <BottomText
+          text={'¿Ya tienes una cuenta?'}
+          navigation={navigation}
+          namescreen={'loginScreen'}
+        />
       </View>
     </View>
   );

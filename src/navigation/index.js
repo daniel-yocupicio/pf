@@ -2,11 +2,10 @@ import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import RegisterScreen from '../screens/registerScreen';
-import HomeScreen from '../screens/homeScreen';
 import LoginScreen from '../screens/loginScreen';
 import UserContext from '../context/UserContext.js';
 import auth from '@react-native-firebase/auth';
-import DrawerStack from './DrawerStack';
+import DrawerNavigation from './DrawerNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,9 +26,9 @@ const stackNoLoged = [
 
 const stackLoged = [
   {
-    name: 'DrawerStack',
-    component: DrawerStack,
-    title: 'DrawerStack',
+    name: 'DrawerNavigation',
+    component: DrawerNavigation,
+    title: 'DrawerNavigation',
     header: false,
   },
 ];
